@@ -89,7 +89,7 @@ except Exception as e:
     st.stop()
 
 # --- TRATAMENTO DE DADOS ---
-df_raw['Data'] = pd.to_datetime(df_raw['Data'], format="%d/%m/%Y", dayfirst=True)
+df_raw['Data'] = pd.to_datetime(df_raw['Data'], format="%d/%m/%Y", dayfirst=True, errors='coerce')
 
 # Limpeza da coluna Valor
 df_raw['Valor'] = df_raw['Valor'].astype(str).str.replace('R$', '', regex=False).str.strip()
@@ -289,3 +289,4 @@ if not df.empty:
         )
 else:
     st.info("Aguardando dados... Preencha sua planilha!")
+
